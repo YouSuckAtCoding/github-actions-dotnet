@@ -1,0 +1,14 @@
+name: CronJob Example
+
+on:
+  schedule:
+    - cron: "*/5 * * * *"  #-->Every 5 minutes. Check some cron syntax later
+
+jobs:
+  build:
+    name: CronJob Example
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Hello Modafoca
+        run: echo "Hello Modafoca"
