@@ -25,5 +25,10 @@ jobs:
         # Sets a working directory, but messes up the folder structure. In this case, would change the cmd to:
         # dotnet publish GitHubActionsDotNet.Api/GitHubActionsDotNet.Api.csproj --configuration Release -o ../artifacts 
         run: dotnet publish src/GitHubActionsDotNet.Api/GitHubActionsDotNet.Api.csproj --configuration Release -o artifacts
+            
+      - uses: actions/upload-artifact@v4
+        with:
+          name: Zero_Hero_Project_Artifact
+          path: artifacts/
 
       
