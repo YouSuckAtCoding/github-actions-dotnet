@@ -1,0 +1,29 @@
+name: CI
+
+on:
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+  build:
+    name: CI
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up .NET Core
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: 8.0
+
+      - name: Build with dotnet
+        run: dotnet build --configuration Release
+      
+      - name: Dotnet publish
+        # working-directory: src/  
+        # Sets a working directory, but messes up the folder structure. In this case, would change the cmd to:
+        # dotnet publish GitHubActionsDotNet.Api/GitHubActionsDotNet.Api.csproj --configuration Release -o ../artifacts 
+        run: dotnet publish src/GitHubActionsDotNet.Api/GitHubActionsDotNet.Api.csproj --configuration Release -o artifacts
+
+      
