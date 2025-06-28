@@ -22,3 +22,6 @@ jobs:
         
       - name: Build with dotnet
         run: dotnet test --configuration Release --no-build
+      
+      - name: Format code
+        run: dotnet format -v detailed --verify-no-changes
