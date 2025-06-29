@@ -1,8 +1,8 @@
 name: CronJob Example
 
 on:
-  schedule:
-    - cron: "* */1 * * *"  #-->At every minute past every hour.. Check some cron syntax later https://crontab.guru/#*_*/1_*_*_*
+  pull_request:
+    branches: ["main]
 
 jobs:
   build:
