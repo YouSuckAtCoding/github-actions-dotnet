@@ -37,16 +37,17 @@ jobs:
           path: artifacts/
 
   deploy_dev:
-    name: Deploy Dev
+    name: Deploy_Dev
     needs: build
     uses: ./.github/workflows/step-deploy.yaml
     with:
       env: dev
+    secrets: inherit
   
   deploy_prod:
-    name: Deploy Prod
-    needs: build
+    name: Deploy_Prod
+    needs: deploy_dev
     uses: ./.github/workflows/step-deploy.yaml
     with:
       env: prod
-
+    secrets: inherit
