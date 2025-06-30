@@ -39,15 +39,20 @@ jobs:
   deploy_dev:
     name: Deploy_Dev
     needs: build
-    uses: YouSuckAtCoding/github-actions-reusable/.github/workflows/step-deploy.yaml@main
+    uses: ./.github/workflows/step-deploy.yaml
     with:
       env: dev
+      resource_group: rg-dometrain-dev
+      app_service_name: app-zero-hero-github-actions-dev
+
     secrets: inherit
   
   deploy_prod:
     name: Deploy_Prod
     needs: deploy_dev
-    uses: YouSuckAtCoding/github-actions-reusable/.github/workflows/step-deploy.yaml@main
+    uses: ./.github/workflows/step-deploy.yaml
     with:
       env: prod
+      resource_group: rg-dometrain-prod
+      app_service_name: app-zero-hero-github-actions-dev
     secrets: inherit

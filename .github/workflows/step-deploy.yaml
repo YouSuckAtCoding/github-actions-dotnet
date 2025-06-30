@@ -6,6 +6,13 @@ on:
             env:
                 required: true
                 type: string
+            resource_group:
+              required: true
+              type: string
+            app_service_name:
+              required: true
+              type: string
+
         secrets:
           AZURE_CLIENT_ID:
             required: true
@@ -38,6 +45,11 @@ jobs:
       - name: 'Run Azure webapp deploy action using publish profile credentials'
         uses: azure/webapps-deploy@v2
         with: 
-          app-name: app-zero-hero-github-actions-${{inputs.env}}
+          app-name: ${{ inputs.app_service_name }}
+          slot-name: slot
           package: artifacts_donwloaded/
+      
+      - name: Swap Slots
+        run: | 
+          az webapp deployment slot swap -g ${{ inputs.resource_group }} -n ${{ inputs.app_service_name }} --slot slot --target-slot production -- verbose
  
