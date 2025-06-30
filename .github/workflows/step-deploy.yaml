@@ -41,6 +41,13 @@ jobs:
           tenant-id: ${{ secrets.AZURE_TENANT_ID }}
           subscription-id: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
           
+      - name: Run Bicep
+        run: |
+          az deployment group create \
+            --name ${{ inputs.env }}-deployment-${{ github.run_number }} \
+            --template-file infrastructure/main.bicep \
+            --resource-group ${{ inputs.resource_group }} \
+            --verbose
 
       - name: 'Run Azure webapp deploy action using publish profile credentials'
         uses: azure/webapps-deploy@v2
