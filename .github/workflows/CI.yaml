@@ -54,5 +54,5 @@ jobs:
     with:
       env: prod
       resource_group: rg-dometrain-prod
-      app_service_name: app-zero-hero-github-actions-dev
+      app_service_name: app-zero-hero-github-actions-prod
     secrets: inherit
