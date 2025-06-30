@@ -39,7 +39,7 @@ jobs:
   deploy_dev:
     name: Deploy_Dev
     needs: build
-    uses: ./.github/workflows/step-deploy.yaml
+    uses: YouSuckAtCoding/github-actions-reusable/.github/workflows/step-deploy.yaml@main
     with:
       env: dev
     secrets: inherit
@@ -47,7 +47,7 @@ jobs:
   deploy_prod:
     name: Deploy_Prod
     needs: deploy_dev
-    uses: ./.github/workflows/step-deploy.yaml
+    uses: YouSuckAtCoding/github-actions-reusable/.github/workflows/step-deploy.yaml@main
     with:
       env: prod
     secrets: inherit
