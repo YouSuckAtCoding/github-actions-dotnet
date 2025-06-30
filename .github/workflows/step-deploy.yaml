@@ -52,4 +52,6 @@ jobs:
       - name: Swap Slots
         run: | 
           az webapp deployment slot swap -g ${{ inputs.resource_group }} -n ${{ inputs.app_service_name }} --slot slot --target-slot production --verbose
+
+          
  
